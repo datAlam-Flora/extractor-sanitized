@@ -1,0 +1,5 @@
+selenium
+colorama
+pygame
+psutil
+pyotp
