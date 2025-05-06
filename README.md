@@ -6,7 +6,7 @@ A web automation tool that uses Selenium to extract data from web applications.
 
 - Python 3.7 or higher ([3.12 recommended](https://www.python.org/downloads/release/python-31210/))
 - Google Chrome browser
-- Internet connection
+- Internet connection**
 
 ## Setup Instructions
 
