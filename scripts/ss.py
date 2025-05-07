@@ -15,7 +15,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementClickInterceptedException, StaleElementReferenceException
 from selenium.webdriver.support.expected_conditions import any_of
 from selenium.webdriver.common.action_chains import ActionChains
-from dagster import MaterializeResult, MetadataValue
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from urllib.parse import urlparse
@@ -1190,13 +1189,6 @@ def main():
         for path in moved_files:
             f.write(path + "\n")
     print(f"MOVED_FILES_FILE:{moved_files_filepath}")
-
-    # Return MaterializeResult with sorted moved_files for Dagster metadata
-    return MaterializeResult(
-        metadata={
-            "moved_files": [MetadataValue.path(path) for path in sorted(moved_files)]
-        }
-    )
 
 # # Initialize Colorama
 init(autoreset=True, strip=False)

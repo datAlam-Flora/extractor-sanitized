@@ -13,7 +13,6 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.support.expected_conditions import any_of
-from dagster import MaterializeResult, MetadataValue
 from urllib.parse import urlparse
 from pathlib import Path
 import sys
@@ -1126,13 +1125,6 @@ def main():
         for path in moved_files:
             f.write(path + "\n")
     print(f"MOVED_FILES_FILE:{moved_files_filepath}")
-
-    # Return MaterializeResult with sorted moved_files for Dagster metadata
-    return MaterializeResult(
-        metadata={
-            "moved_files": [MetadataValue.path(path) for path in sorted(moved_files)]
-        }
-    )
 
 if __name__ == "__main__":
     main()  # ✅ No need to pass parameters, as they are set inside `main()`
